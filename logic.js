@@ -1,7 +1,7 @@
 const TwitterModule = () => {
   let _posts = [
     {
-      text: 'First post!',
+      text: 'First post!🐱‍🏍',
       id: 'p1',
       comments: [
         { id: 'c1', text: 'First comment on first post!' },
@@ -10,44 +10,50 @@ const TwitterModule = () => {
       ],
     },
     {
-      text: 'Aw man, I wanted to be first',
+      text: 'Second Post✌',
       id: 'p2',
       comments: [
         {
           id: 'c4',
-          text: "Don't wory second poster, you'll be first one day.",
+          text: "Don't wory second poster, you'll be first one day.😛",
         },
         { id: 'c5', text: 'Yeah, believe in yourself!' },
-        { id: 'c6', text: 'Haha second place what a joke.' },
+        { id: 'c6', text: 'Haha 🤣second place what a joke.' },
       ],
     },
   ];
 
+  //managing unique IDs for comments and posts
   let lastPostId = 'p2';
-  let lastCommentId = 'c6';
 
   const createNewPostId = () => {
     lastPostId = `p${parseInt(lastPostId[1]) + 1}`;
     return lastPostId;
   };
+
+  let lastCommentId = 'c6';
   const createNewCommentId = () => {
     lastCommentId = `c${parseInt(lastCommentId[1]) + 1}`;
     return lastPostId;
   };
 
-  const postIdCounter = () => {
-    return _posts.length;
-  };
-  const commentIdCounter = () => {
-    let counter = 0;
-    for (const post of _posts) {
-      counter += post.comments.length;
-    }
-    return counter;
-  };
+  //NOT IN USE
+  // const postIdCounter = () => {
+  //   return _posts.length;
+  // };
+
+  // const commentIdCounter = () => {
+  //   let counter = 0;
+  //   for (const post of _posts) {
+  //     counter += post.comments.length;
+  //   }
+  //   return counter;
+  // };
+
   const getPosts = () => {
     return _posts;
   };
+
   const addPost = (text) => {
     newId = createNewPostId();
     newPost = {
@@ -57,6 +63,7 @@ const TwitterModule = () => {
     };
     _posts.push(newPost);
   };
+
   const removePost = (postId) => {
     for (const post of _posts) {
       if (post.id === postId) {
@@ -81,9 +88,6 @@ const TwitterModule = () => {
     }
   };
 
-  ////to much repete code with add and remove post/comment
-  ////can make an array of id's and avoid nested loops
-
   const removeComment = (postId, commentId) => {
     for (const post of _posts) {
       if (post.id === postId) {
@@ -99,8 +103,8 @@ const TwitterModule = () => {
   };
 
   return {
-    postIdCounter: postIdCounter,
-    commentIdCounter: commentIdCounter,
+    // postIdCounter: postIdCounter,
+    // commentIdCounter: commentIdCounter,
     getPosts: getPosts,
     addPost: addPost,
     removePost: removePost,
@@ -108,7 +112,3 @@ const TwitterModule = () => {
     removeComment: removeComment,
   };
 };
-
-
-
-

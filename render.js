@@ -5,8 +5,7 @@ const Renderer = () => {
       let postText = post.text;
       let postId = post.id;
       let comments = post.comments;
-      let postTemplate = `<div class="post" data-id=${postId}>${postText}
-      <div class="post-text" </div>
+      let postTemplate = `<div class="post" data-id=${postId}> <div class="post-text">${postText} </div>
       <div class="comments"></div>
       <input class="comment-input" type="text" />
       <button class="comment-btn">Comment</button>
@@ -19,7 +18,7 @@ const Renderer = () => {
         let commentId = comment.id;
         let commentText = comment.text;
         let commentTemplate = `<div class="comment" data-id=${comment.id}>
-        <span class="delete-comment">X</span>
+        <span class="delete-comment">❌</span>
         <span class="comment-text">${comment.text}</span>
       </div>`;
         $(`[data-id=${postId}]`).find('.comments').append(commentTemplate);
