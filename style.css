@@ -9,10 +9,10 @@ body {
   padding-left: 25px;
   padding-right: 25px;
   grid-template-columns: 3fr 1fr;
-  grid-template-areas: 
-   'h h'
-   'i b' 
-   'p p';
+  grid-template-areas:
+    'h h'
+    'i b'
+    'p p';
 }
 
 #title {
@@ -30,6 +30,7 @@ body {
 
 #posts {
   grid-area: p;
+  outline: 0;
 }
 .post-text {
   color: black;
@@ -89,6 +90,8 @@ body {
   text-align: center;
   transition: all 0.2s;
   background-color: #e74c3c;
+  outline: 0;
+  margin-top: 15px;
 }
 
 .delete:hover {
@@ -101,6 +104,7 @@ body {
   color: #e74c3c;
   font-size: larger;
   margin-right: 20px;
+  outline: 0;
 }
 
 .comment-btn {
@@ -117,6 +121,7 @@ body {
   text-align: center;
   transition: all 0.2s;
   background-color: #3498db;
+  outline: 0;
 }
 
 .comment-btn:hover {
@@ -131,6 +136,7 @@ body {
 input {
   border: solid black 1px;
   border-radius: 0.5em;
+  outline: 0;
 }
 
 .comment-input {

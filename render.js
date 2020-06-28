@@ -9,14 +9,11 @@ const Renderer = () => {
       <div class="comments"></div>
       <input class="comment-input" type="text" />
       <button class="comment-btn">Comment</button>
+      <br>
       <button class="delete">Delete Post</button>
     </div>`;
-
       $('#posts').append(postTemplate);
-
       for (const comment of comments) {
-        let commentId = comment.id;
-        let commentText = comment.text;
         let commentTemplate = `<div class="comment" data-id=${comment.id}>
         <span class="delete-comment">❌</span>
         <span class="comment-text">${comment.text}</span>
@@ -25,6 +22,5 @@ const Renderer = () => {
       }
     }
   };
-
   return { renderPosts };
 };
