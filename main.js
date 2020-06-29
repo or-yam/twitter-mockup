@@ -8,7 +8,7 @@ $('#post').on('click', function () {
   let text = $('#input').val();
   if (text) {
     twitter.addPost(text);
-    $('#input').val('')
+    $('#input').val('');
     renderer.renderPosts(twitter.getPosts());
   }
 });
@@ -24,8 +24,10 @@ $('#posts').on('click', '.delete', function () {
 $('#posts').on('click', '.comment-btn', function () {
   let postId = $(this).closest('.post').data().id;
   let text = $(this).siblings('.comment-input').val();
-  twitter.addComment(text, postId);
-  renderer.renderPosts(twitter.getPosts());
+  if (text) {
+    twitter.addComment(text, postId);
+    renderer.renderPosts(twitter.getPosts());
+  }
 });
 
 //Remove Comment by ID
