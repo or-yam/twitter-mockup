@@ -3,6 +3,7 @@ const renderer = Renderer();
 
 renderer.renderPosts(twitter.getPosts());
 
+
 $('#post').on('click', function () {
   let text = $('#input').val();
   if (text) {
@@ -11,11 +12,13 @@ $('#post').on('click', function () {
   }
 });
 
+
 $('#posts').on('click', '.delete', function () {
   let id = $(this).closest('.post').data().id;
   twitter.removePost(id);
   renderer.renderPosts(twitter.getPosts());
 });
+
 
 $('#posts').on('click', '.delete-comment', function () {
   let postId = $(this).closest('.post').data().id;
@@ -23,6 +26,7 @@ $('#posts').on('click', '.delete-comment', function () {
   twitter.removeComment(postId, commentId);
   renderer.renderPosts(twitter.getPosts());
 });
+
 
 $('#posts').on('click', '.comment-btn', function () {
   let postId = $(this).closest('.post').data().id;

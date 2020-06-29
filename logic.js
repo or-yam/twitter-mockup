@@ -23,33 +23,25 @@ const TwitterModule = () => {
     },
   ];
 
-  let lastPostId = 'p2';
-  let lastCommentId = 'c6';
-
-  const createNewPostId = () => {
-    lastPostId = `p${parseInt(lastPostId[1]) + 1}`;
-    return lastPostId;
-  };
-  const createNewCommentId = () => {
-    lastCommentId = `c${parseInt(lastCommentId[1]) + 1}`;
-    return lastPostId;
-  };
+  let postIdCount = 2;
+  let commentIdCount = 6;
 
   const postIdCounter = () => {
-    return _posts.length;
+    postIdCount++;
+    return `p${postIdCount}`;
   };
+
   const commentIdCounter = () => {
-    let counter = 0;
-    for (const post of _posts) {
-      counter += post.comments.length;
-    }
-    return counter;
+    commentIdCount++;
+    return `c${commentIdCount}`;
   };
+
   const getPosts = () => {
     return _posts;
   };
+
   const addPost = (text) => {
-    newId = createNewPostId();
+    newId = postIdCounter();
     newPost = {
       text: text,
       id: newId,
@@ -57,6 +49,7 @@ const TwitterModule = () => {
     };
     _posts.push(newPost);
   };
+
   const removePost = (postId) => {
     for (const post of _posts) {
       if (post.id === postId) {
@@ -70,7 +63,7 @@ const TwitterModule = () => {
   const addComment = (text, postId) => {
     for (const post of _posts) {
       if (post.id === postId) {
-        newId = createNewCommentId();
+        newId = commentIdCounter();
         newComment = {
           id: newId,
           text: text,
@@ -80,9 +73,6 @@ const TwitterModule = () => {
       }
     }
   };
-
-  ////to much repete code with add and remove post/comment
-  ////can make an array of id's and avoid nested loops
 
   const removeComment = (postId, commentId) => {
     for (const post of _posts) {
@@ -99,8 +89,6 @@ const TwitterModule = () => {
   };
 
   return {
-    postIdCounter: postIdCounter,
-    commentIdCounter: commentIdCounter,
     getPosts: getPosts,
     addPost: addPost,
     removePost: removePost,
@@ -108,7 +96,3 @@ const TwitterModule = () => {
     removeComment: removeComment,
   };
 };
-
-
-
-
