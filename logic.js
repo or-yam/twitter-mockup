@@ -23,39 +23,25 @@ const TwitterModule = () => {
     },
   ];
 
-  //managing unique IDs for comments and posts
-  let lastPostId = 'p2';
+  let postIdCount = 2;
+  let commentIdCount = 6;
 
-  const createNewPostId = () => {
-    lastPostId = `p${parseInt(lastPostId[1]) + 1}`;
-    return lastPostId;
+  const postIdCounter = () => {
+    postIdCount++;
+    return `p${postIdCount}`;
   };
 
-  let lastCommentId = 'c6';
-  const createNewCommentId = () => {
-    lastCommentId = `c${parseInt(lastCommentId[1]) + 1}`;
-    return lastPostId;
+  const commentIdCounter = () => {
+    commentIdCount++;
+    return `c${commentIdCount}`;
   };
-
-  //NOT IN USE
-  // const postIdCounter = () => {
-  //   return _posts.length;
-  // };
-
-  // const commentIdCounter = () => {
-  //   let counter = 0;
-  //   for (const post of _posts) {
-  //     counter += post.comments.length;
-  //   }
-  //   return counter;
-  // };
 
   const getPosts = () => {
     return _posts;
   };
 
   const addPost = (text) => {
-    newId = createNewPostId();
+    newId = postIdCounter();
     newPost = {
       text: text,
       id: newId,
@@ -77,7 +63,7 @@ const TwitterModule = () => {
   const addComment = (text, postId) => {
     for (const post of _posts) {
       if (post.id === postId) {
-        newId = createNewCommentId();
+        newId = commentIdCounter();
         newComment = {
           id: newId,
           text: text,
@@ -103,8 +89,6 @@ const TwitterModule = () => {
   };
 
   return {
-    // postIdCounter: postIdCounter,
-    // commentIdCounter: commentIdCounter,
     getPosts: getPosts,
     addPost: addPost,
     removePost: removePost,

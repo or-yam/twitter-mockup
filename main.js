@@ -12,12 +12,14 @@ $('#post').on('click', function () {
     renderer.renderPosts(twitter.getPosts());
   }
 });
+
 //Remove post by ID
 $('#posts').on('click', '.delete', function () {
   let id = $(this).closest('.post').data().id;
   twitter.removePost(id);
   renderer.renderPosts(twitter.getPosts());
 });
+
 //Add comment by ID
 $('#posts').on('click', '.comment-btn', function () {
   let postId = $(this).closest('.post').data().id;
@@ -25,6 +27,7 @@ $('#posts').on('click', '.comment-btn', function () {
   twitter.addComment(text, postId);
   renderer.renderPosts(twitter.getPosts());
 });
+
 //Remove Comment by ID
 $('#posts').on('click', '.delete-comment', function () {
   let postId = $(this).closest('.post').data().id;
